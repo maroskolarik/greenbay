@@ -1,0 +1,23 @@
+version: '3.8'
+
+volumes:
+  greenbay-db:
+
+networks:
+  greenbay-net:
+
+services:
+  db:
+    image: mysql:8.1.0
+    container_name: greenbay-db
+    restart: unless-stopped
+    volumes:
+      - greenbay-db:/var/lib/mysql
+    networks:
+      - greenbay-net
+    ports:
+      - ${DB_PORT}:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=greenbay-db
+
