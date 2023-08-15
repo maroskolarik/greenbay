@@ -50,7 +50,7 @@ public class DatabaseUserService implements UserService, UserDetailsService {
         if (dto.getPassword() == null || dto.getPassword().isEmpty()) throw new IllegalArgumentException("Password is required");
         if (dto.getPassword().length() < 8) throw new IllegalArgumentException("Invalid password");
         if (!isUsernameInDatabase(dto.getUsername())) throw new BadCredentialsException("Unregistered user");
-        return new LoginResponseDto("ok", generateToken(dto.getUsername(), dto.getPassword()));
+        return new LoginResponseDto("ok", generateToken(dto.getUsername(), dto.getPassword()), userRepository.findUserByUsername(dto.getUsername()).get().getDollars());
     }
 
     @Override

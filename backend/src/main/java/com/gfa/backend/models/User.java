@@ -15,6 +15,7 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
+    private Integer dollars;
 
     public User() {
     }
@@ -22,6 +23,7 @@ public class User implements UserDetails {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        dollars = 0;
     }
 
     public Long getId() {
@@ -71,5 +73,13 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getDollars() {
+        return dollars;
+    }
+
+    public void setDollars(Integer dollars) {
+        this.dollars = dollars;
     }
 }
